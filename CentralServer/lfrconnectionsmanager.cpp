@@ -13,12 +13,13 @@ LFRConnectionsManager::LFRConnectionsManager(boost::asio::ip::tcp::endpoint ep)
 
 void LFRConnectionsManager::accepting()
 {
+    cout << "Accepting" << endl;
     connections.push_back(std::shared_ptr<LFRConnection>(new LFRConnection(context, this)));
-	acceptor.async_accept(connections.back()->socket, boost::bind<void>([&](std::shared_ptr<LFRConnection> connection, const boost::system::error_code& error)
-	{
-							  acceptNewConnection(connection, error);
-							  return;
-						  }, connections.back(), _1));
+    acceptor.async_accept(connections.back()->socket, boost::bind<void>([&](std::shared_ptr<LFRConnection> connection, const boost::system::error_code& error)
+                          {
+                              acceptNewConnection(connection, error);
+                              accepting();
+                          }, connections.back(), _1));
 }
 
 void LFRConnectionsManager::run()
@@ -79,6 +80,7 @@ void LFRConnectionsManager::acceptNewConnection(std::shared_ptr<LFRConnection> c
 		return;
 	}
 	//New connection accepted
+    cout << "New connection" << endl;
     connection->start();
     connections.push_back(std::shared_ptr<LFRConnection>(new LFRConnection(context, this)));
 	acceptor.async_accept(connections.back()->socket, boost::bind<void>([&](std::shared_ptr<LFRConnection> connection, const boost::system::error_code& error)

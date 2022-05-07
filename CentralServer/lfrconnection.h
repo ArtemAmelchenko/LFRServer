@@ -5,6 +5,7 @@
 #include <QDateTime>
 #include <QJsonDocument>
 #include <queue>
+#include <thread>
 #include "personalcardmanager.h"
 
 struct PassingEvent
@@ -27,8 +28,6 @@ class LFRConnection
 {
 public:
     LFRConnection(boost::asio::io_context &context, LFRConnectionsManager *manager);
-
-	bool isConnected() const;
 
 	void sayHello();
 
@@ -65,7 +64,6 @@ private:
 	std::string userName;	//user information
 
 	boost::asio::ip::tcp::socket socket;
-	bool connected;
 	bool running;
     bool syncronised;
 
@@ -76,6 +74,8 @@ private:
 
     QDateTime lastSyncTime;
     QDateTime lastPing;
+
+    std::thread t;
 };
 
 #endif // LFRCONNECTION_H

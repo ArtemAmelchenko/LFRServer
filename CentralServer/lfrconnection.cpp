@@ -7,6 +7,7 @@
 #include <QJsonObject>
 #include <QJsonValue>
 #include <QUuid>
+#include <iostream>
 
 using namespace boost::asio;
 using namespace std;
@@ -16,11 +17,6 @@ LFRConnection::LFRConnection(io_context &context, LFRConnectionsManager *manager
     : socket(context), manager(manager), in(&buffer)
 {
     lastPing = QDateTime::currentDateTime();
-}
-
-bool LFRConnection::isConnected() const
-{
-    return connected;
 }
 
 void LFRConnection::sayHello()
@@ -39,29 +35,31 @@ void LFRConnection::sayHello()
 
 void LFRConnection::start()
 {
-    if (!connected)
-        return;
     running = true;
 
-    fullSyncronisation(manager->personalCards());
-
-    async_read_until(socket, buffer, '\n', [&](const boost::system::error_code& error, std::size_t bytes_transferred)
+    t = thread([&]()
     {
-        onRead(error, bytes_transferred);
-    });
+        cout << "Connection started" << endl;
 
-    while(running)
-    {
-        if (lastSyncTime.secsTo(QDateTime::currentDateTime()) >= 10)
+        fullSyncronisation(manager->personalCards());
+
+        async_read_until(socket, buffer, '\n', [&](const boost::system::error_code& error, std::size_t bytes_transferred)
         {
-            //log -> disconnect
-            break;
+            onRead(error, bytes_transferred);
+        });
+
+        while(running)
+        {
+            if (lastSyncTime.secsTo(QDateTime::currentDateTime()) >= 10)
+            {
+                //log -> disconnect
+                break;
+            }
+            std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         }
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-    }
-    socket.close();
-    connected = false;
-    manager->connectionClosed(this);
+        socket.close();
+        manager->connectionClosed(this);
+    });
 }
 
 bool LFRConnection::isRunning() const
@@ -76,20 +74,37 @@ void LFRConnection::stop()
 
 void LFRConnection::fullSyncronisation(const QList<PersonalCard> *personalCards)
 {
+    cout << "Full sync" << endl;
     std::string msg = "sync\n";
     const_buffer buff(msg.data(), msg.size());
-    socket.send(buff);
+    boost::asio::async_write(socket, buff, [&](const boost::system::error_code& error, std::size_t bytes_transferred)
+    {
+        //log -> restartQuery writed;
+        cout << "sended sunc" << endl;
+    });
+    //socket.write_some(buff);
+    msg = QString::number(personalCards->size()).toStdString();
+    msg += "\n";
+    buff = const_buffer(msg.data(), msg.size());
+    boost::asio::async_write(socket, buff, [&](const boost::system::error_code& error, std::size_t bytes_transferred)
+    {
+        //log -> restartQuery writed;
+        cout << "sended sunc" << endl;
+    });
 
     for (int i = 0; i < personalCards->size(); ++i)
     {
-        msg += personalCardToJSON(personalCards->at(i));
+        cout << "Sending card " << i << endl;
+        msg = personalCardToJSON(personalCards->at(i));
         msg += "!end!";
         buff = const_buffer(msg.data(), msg.size());
-        socket.send(buff);
+        boost::asio::async_write(socket, buff, [&](const boost::system::error_code& error, std::size_t bytes_transferred)
+        {
+            cout << "card writed" << endl;
+        });
+        //boost::asio::write(socket, buff);
     }
-    msg = "end sync\n";
-    buff = const_buffer(msg.data(), msg.size());
-    socket.send(buff);
+    cout << "End sync" << endl;
 }
 
 void LFRConnection::personalCardAdded(const PersonalCard &card)
@@ -151,12 +166,14 @@ void LFRConnection::onRead(const boost::system::error_code &err, size_t read_byt
     if (err)
     {
         //log debug << BIG ERROR
+        cout << "BIG ERROR" << endl;
         return;
     }
 
     string msg;
     getline(in, msg);
 
+    cout << msg << endl;
     if (msg == "ping")
     {
         lastPing = QDateTime::currentDateTime();
@@ -180,7 +197,9 @@ void LFRConnection::onRead(const boost::system::error_code &err, size_t read_byt
         if (!recvPersonalCard(pc))
         {
             // disconnect
+            cout << "pipisa" << endl;
         }
+        cout << "card readed" << endl;
         manager->personalCardAdded(pc, this);
     }
     else if (msg == "personal card edited")
@@ -223,7 +242,10 @@ string LFRConnection::personalCardToJSON(const PersonalCard &card)
     obj.insert("contrast", card.contrastCorrection);
     doc.setObject(obj);
 
-    return doc.toJson().toStdString();
+    QByteArray b = doc.toJson();
+    string s(b.data());
+
+    return s;
 }
 
 PersonalCard LFRConnection::personalCardFromJSON(const string &str)
@@ -292,20 +314,19 @@ bool LFRConnection::recvPassingEvent(PassingEvent &event, int millisec)
 
 bool LFRConnection::recvPersonalCard(PersonalCard &card, int millisec)
 {
-    boost::asio::streambuf buff;
-    std::istream istr(&buff);
     bool recv = false;
-    async_read_until(socket, buff, "!end!", [&](const boost::system::error_code& error, std::size_t bytes_transferred)
+    async_read_until(socket, buffer, "!end!", [&](const boost::system::error_code& error, std::size_t bytes_transferred)
     {
+        cout << "mama ya prochital" << endl;
         recv = true;
         std::string msg;
-        istr >> msg;
+        in >> msg;
         card = personalCardFromJSON(msg);
     });
     int mil = 0;
     while (!recv)
     {
-        std::this_thread::sleep_for(std::chrono::milliseconds(1));
+        std::this_thread::sleep_for(std::chrono::milliseconds(10000));
         mil++;
         if (mil >= millisec)
             return false;
