@@ -14,7 +14,7 @@ LFRConnectionsManager::LFRConnectionsManager(boost::asio::ip::tcp::endpoint ep)
 void LFRConnectionsManager::accepting()
 {
     cout << "Accepting" << endl;
-    connections.push_back(std::shared_ptr<LFRConnection>(new LFRConnection(context, this)));
+    connections.push_back(std::shared_ptr<LFRConnection>(new LFRConnection(this)));
     acceptor.async_accept(connections.back()->socket, boost::bind<void>([&](std::shared_ptr<LFRConnection> connection, const boost::system::error_code& error)
                           {
                               acceptNewConnection(connection, error);
@@ -44,7 +44,7 @@ void LFRConnectionsManager::personalCardDeleted(const PersonalCard &card, LFRCon
 
 void LFRConnectionsManager::connectionClosed(LFRConnection *connection)
 {
-
+    cout << "connection closed" << endl;
 }
 
 void LFRConnectionsManager::newPassingEvent(const PassingEvent &event)
@@ -82,10 +82,4 @@ void LFRConnectionsManager::acceptNewConnection(std::shared_ptr<LFRConnection> c
 	//New connection accepted
     cout << "New connection" << endl;
     connection->start();
-    connections.push_back(std::shared_ptr<LFRConnection>(new LFRConnection(context, this)));
-	acceptor.async_accept(connections.back()->socket, boost::bind<void>([&](std::shared_ptr<LFRConnection> connection, const boost::system::error_code& error)
-	{
-							  acceptNewConnection(connection, error);
-							  return;
-						  }, connections.back(), _1));
 }

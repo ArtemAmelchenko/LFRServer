@@ -18,7 +18,7 @@ struct PassingEvent
 
 struct Query
 {
-    int type; //1 - added, 2 - edited, 3 - deleted
+    int type; //1 - added, 2 - edited, 3 - deleted, 4 - restart
     PersonalCard card;
 };
 
@@ -27,13 +27,9 @@ class LFRConnectionsManager;
 class LFRConnection
 {
 public:
-    LFRConnection(boost::asio::io_context &context, LFRConnectionsManager *manager);
-
-	void sayHello();
+    LFRConnection(LFRConnectionsManager *manager);
 
 	void start();
-
-	bool isRunning() const;
 
 	void stop();
 
@@ -49,7 +45,7 @@ public:
 
 private:
 
-    void onRead(const boost::system::error_code &err, size_t read_bytes);
+    void sending();
 
     std::string personalCardToJSON(const PersonalCard &card);
     PersonalCard personalCardFromJSON(const std::string &str);
@@ -62,20 +58,22 @@ private:
 	bool sendRestartQuery();
 
 	std::string userName;	//user information
+    QUuid userID;
 
-	boost::asio::ip::tcp::socket socket;
+    boost::asio::io_context context;
+    boost::asio::ip::tcp::socket socket;
 	bool running;
-    bool syncronised;
 
     boost::asio::streambuf buffer;
     std::istream in;
 
 	std::shared_ptr<LFRConnectionsManager> manager;
 
-    QDateTime lastSyncTime;
     QDateTime lastPing;
 
     std::thread t;
+
+    std::queue<Query> queries;
 };
 
 #endif // LFRCONNECTION_H
