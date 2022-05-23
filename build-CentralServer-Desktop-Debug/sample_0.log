@@ -1,0 +1,365 @@
+[2022-05-20 16:04:34.486545]: Main start
+[2022-05-20 16:04:34.487250]: HTTP server created
+[2022-05-20 16:04:34.487454]: card manager start loading cards
+[2022-05-20 16:04:34.487909]: LFR manager created
+[2022-05-20 16:04:34.488005]: manager: accepting
+[2022-05-20 16:04:34.488159]: LFR manager accepting
+[2022-05-20 16:04:34.488320]: LFR manager thread created
+[2022-05-20 16:04:34.488402]: runnung context
+[2022-05-20 16:04:44.274696]: connect get
+[2022-05-20 16:04:44.275724]: manager: new connection
+[2022-05-20 16:04:44.276088]: connection: started
+[2022-05-20 16:04:44.276802]: manager: accepting
+[2022-05-20 16:04:44.277462]: connection: full sync
+[2022-05-20 16:04:44.277816]: connection: sync end, send 0 cards
+[2022-05-20 16:04:44.279844]: connection: reading socket
+[2022-05-20 16:04:46.724641]: connection: read until failed, closing connection
+[2022-05-20 16:04:46.782766]: connection: waiting workThread stop
+[2022-05-20 16:04:46.782926]: connection: closing socket
+[2022-05-20 16:05:37.929963]: connect get
+[2022-05-20 16:05:37.930770]: manager: new connection
+[2022-05-20 16:05:37.931074]: connection: started
+[2022-05-20 16:05:37.931374]: manager: accepting
+[2022-05-20 16:05:37.931706]: connection: full sync
+[2022-05-20 16:05:37.932175]: connection: sync end, send 0 cards
+[2022-05-20 16:05:37.932512]: connection: reading socket
+[2022-05-20 16:05:47.796270]: connection: query - ping
+[2022-05-20 16:05:47.797559]: connection: reading socket
+[2022-05-20 16:05:57.867217]: connection: no msg for 10 sec -> disconnect
+[2022-05-20 16:05:57.867373]: connection: waiting workThread stop
+[2022-05-20 16:06:01.515842]: connection: read until failed, closing connection
+[2022-05-20 16:06:01.516267]: connection: closing socket
+[2022-05-20 16:06:34.174097]: connect get
+[2022-05-20 16:06:34.175029]: manager: new connection
+[2022-05-20 16:06:34.175420]: connection: started
+[2022-05-20 16:06:34.175732]: manager: accepting
+[2022-05-20 16:06:34.176797]: connection: full sync
+[2022-05-20 16:06:34.177119]: connection: sync end, send 0 cards
+[2022-05-20 16:06:34.177367]: connection: reading socket
+[2022-05-20 16:06:37.669635]: connection: query - ping
+[2022-05-20 16:06:37.669943]: connection: reading socket
+[2022-05-20 16:06:45.109393]: connection: query - ping
+[2022-05-20 16:06:45.109960]: connection: reading socket
+[2022-05-20 16:06:47.564803]: connection: query - ping
+[2022-05-20 16:06:47.565001]: connection: reading socket
+[2022-05-20 16:06:51.121012]: connection: read until failed, closing connection
+[2022-05-20 16:06:51.208736]: connection: waiting workThread stop
+[2022-05-20 16:06:51.209011]: connection: closing socket
+[2022-05-20 16:07:41.666137]: connect get
+[2022-05-20 16:07:41.668485]: manager: new connection
+[2022-05-20 16:07:41.668700]: connection: started
+[2022-05-20 16:07:41.668848]: manager: accepting
+[2022-05-20 16:07:41.669725]: connection: full sync
+[2022-05-20 16:07:41.671175]: connection: sync end, send 0 cards
+[2022-05-20 16:07:41.671403]: connection: reading socket
+[2022-05-20 16:07:45.834326]: connection: query - ping
+[2022-05-20 16:07:45.835348]: connection: reading socket
+[2022-05-20 16:07:49.174918]: connection: read until failed, closing connection
+[2022-05-20 16:07:49.184739]: connection: waiting workThread stop
+[2022-05-20 16:07:49.184869]: connection: closing socket
+[2022-05-20 16:08:17.830047]: connect get
+[2022-05-20 16:08:17.831271]: manager: new connection
+[2022-05-20 16:08:17.831472]: connection: started
+[2022-05-20 16:08:17.831680]: manager: accepting
+[2022-05-20 16:08:17.831786]: connection: full sync
+[2022-05-20 16:08:17.832161]: connection: sync end, send 0 cards
+[2022-05-20 16:08:17.834021]: connection: reading socket
+[2022-05-20 16:08:19.659705]: connection: read until failed, closing connection
+[2022-05-20 16:08:19.737274]: connection: waiting workThread stop
+[2022-05-20 16:08:19.737420]: connection: closing socket
+[2022-05-20 16:09:32.435033]: connect get
+[2022-05-20 16:09:32.436102]: manager: new connection
+[2022-05-20 16:09:32.436308]: connection: started
+[2022-05-20 16:09:32.436462]: manager: accepting
+[2022-05-20 16:09:32.439271]: connection: full sync
+[2022-05-20 16:09:32.439558]: connection: sync end, send 0 cards
+[2022-05-20 16:09:32.439801]: connection: reading socket
+[2022-05-20 16:09:42.457442]: connection: no msg for 10 sec -> disconnect
+[2022-05-20 16:09:42.457575]: connection: waiting workThread stop
+[2022-05-20 16:09:46.590543]: connection: query - ping
+[2022-05-20 16:09:46.590868]: connection: closing socket
+[2022-05-20 16:09:48.585866]: connect get
+[2022-05-20 16:09:48.588802]: manager: new connection
+[2022-05-20 16:09:48.588997]: connection: started
+[2022-05-20 16:09:48.589124]: manager: accepting
+[2022-05-20 16:09:48.589147]: connection: full sync
+[2022-05-20 16:09:48.590755]: connection: sync end, send 0 cards
+[2022-05-20 16:09:48.591114]: connection: reading socket
+[2022-05-20 16:09:48.690726]: connection: query - ping
+[2022-05-20 16:09:48.691193]: connection: reading socket
+[2022-05-20 16:09:50.694062]: connection: query - ping
+[2022-05-20 16:09:50.694221]: connection: reading socket
+[2022-05-20 16:09:57.835187]: connection: read until failed, closing connection
+[2022-05-20 16:09:57.907801]: connection: waiting workThread stop
+[2022-05-20 16:09:57.907943]: connection: closing socket
+[2022-05-20 16:10:02.087550]: connect get
+[2022-05-20 16:10:02.091478]: manager: new connection
+[2022-05-20 16:10:02.091712]: connection: started
+[2022-05-20 16:10:02.091866]: manager: accepting
+[2022-05-20 16:10:02.091888]: connection: full sync
+[2022-05-20 16:10:02.092130]: connection: sync end, send 0 cards
+[2022-05-20 16:10:02.092361]: connection: reading socket
+[2022-05-20 16:10:04.192323]: connection: query - ping
+[2022-05-20 16:10:04.192519]: connection: reading socket
+[2022-05-20 16:10:06.196973]: connection: query - ping
+[2022-05-20 16:10:06.197164]: connection: reading socket
+[2022-05-20 16:10:06.893497]: connection: read until failed, closing connection
+[2022-05-20 16:10:06.902041]: connection: waiting workThread stop
+[2022-05-20 16:10:06.902163]: connection: closing socket
+[2022-05-20 16:12:36.816971]: connect get
+[2022-05-20 16:12:36.818021]: manager: new connection
+[2022-05-20 16:12:36.818256]: connection: started
+[2022-05-20 16:12:36.818442]: manager: accepting
+[2022-05-20 16:12:36.821894]: connection: full sync
+[2022-05-20 16:12:36.822173]: connection: sync end, send 0 cards
+[2022-05-20 16:12:36.822618]: connection: reading socket
+[2022-05-20 16:12:38.827124]: connection: query - ping
+[2022-05-20 16:12:38.827343]: connection: reading socket
+[2022-05-20 16:12:40.830115]: connection: query - ping
+[2022-05-20 16:12:40.830281]: connection: reading socket
+[2022-05-20 16:12:42.833355]: connection: query - ping
+[2022-05-20 16:12:42.833702]: connection: reading socket
+[2022-05-20 16:12:44.837050]: connection: query - ping
+[2022-05-20 16:12:44.837243]: connection: reading socket
+[2022-05-20 16:12:46.839962]: connection: query - ping
+[2022-05-20 16:12:46.840120]: connection: reading socket
+[2022-05-20 16:12:48.842809]: connection: query - ping
+[2022-05-20 16:12:48.842958]: connection: reading socket
+[2022-05-20 16:12:50.845584]: connection: query - ping
+[2022-05-20 16:12:50.845724]: connection: reading socket
+[2022-05-20 16:12:52.848278]: connection: query - ping
+[2022-05-20 16:12:52.848562]: connection: reading socket
+[2022-05-20 16:12:54.851254]: connection: query - ping
+[2022-05-20 16:12:54.851392]: connection: reading socket
+[2022-05-20 16:12:56.854230]: connection: query - ping
+[2022-05-20 16:12:56.854416]: connection: reading socket
+[2022-05-20 16:12:58.857368]: connection: query - ping
+[2022-05-20 16:12:58.857544]: connection: reading socket
+[2022-05-20 16:13:00.860319]: connection: query - ping
+[2022-05-20 16:13:00.860462]: connection: reading socket
+[2022-05-20 16:13:02.863379]: connection: query - ping
+[2022-05-20 16:13:02.863550]: connection: reading socket
+[2022-05-20 16:13:04.866390]: connection: query - ping
+[2022-05-20 16:13:04.866537]: connection: reading socket
+[2022-05-20 16:13:06.869542]: connection: query - ping
+[2022-05-20 16:13:06.921801]: connection: reading socket
+[2022-05-20 16:13:08.872456]: connection: query - ping
+[2022-05-20 16:13:08.872638]: connection: reading socket
+[2022-05-20 16:13:10.875549]: connection: query - ping
+[2022-05-20 16:13:10.875824]: connection: reading socket
+[2022-05-20 16:13:12.878492]: connection: query - ping
+[2022-05-20 16:13:12.878665]: connection: reading socket
+[2022-05-20 16:13:14.881396]: connection: query - ping
+[2022-05-20 16:13:14.881537]: connection: reading socket
+[2022-05-20 16:13:16.884522]: connection: query - ping
+[2022-05-20 16:13:16.884701]: connection: reading socket
+[2022-05-20 16:13:18.887557]: connection: query - ping
+[2022-05-20 16:13:18.887755]: connection: reading socket
+[2022-05-20 16:13:20.891102]: connection: query - ping
+[2022-05-20 16:13:20.891303]: connection: reading socket
+[2022-05-20 16:13:22.894390]: connection: query - ping
+[2022-05-20 16:13:22.894527]: connection: reading socket
+[2022-05-20 16:13:24.897436]: connection: query - ping
+[2022-05-20 16:13:24.897609]: connection: reading socket
+[2022-05-20 16:13:26.900565]: connection: query - ping
+[2022-05-20 16:13:26.900752]: connection: reading socket
+[2022-05-20 16:13:28.903472]: connection: query - ping
+[2022-05-20 16:13:28.903897]: connection: reading socket
+[2022-05-20 16:13:30.906706]: connection: query - ping
+[2022-05-20 16:13:30.906875]: connection: reading socket
+[2022-05-20 16:13:32.909627]: connection: query - ping
+[2022-05-20 16:13:32.909794]: connection: reading socket
+[2022-05-20 16:13:34.912449]: connection: query - ping
+[2022-05-20 16:13:34.912600]: connection: reading socket
+[2022-05-20 16:13:36.915692]: connection: query - ping
+[2022-05-20 16:13:36.915843]: connection: reading socket
+[2022-05-20 16:13:38.918715]: connection: query - ping
+[2022-05-20 16:13:38.918880]: connection: reading socket
+[2022-05-20 16:13:40.817600]: connection: read until failed, closing connection
+[2022-05-20 16:13:40.821267]: connection: waiting workThread stop
+[2022-05-20 16:13:40.821421]: connection: closing socket
+[2022-05-20 16:13:43.787934]: connect get
+[2022-05-20 16:13:43.788731]: manager: new connection
+[2022-05-20 16:13:43.789641]: connection: started
+[2022-05-20 16:13:43.789868]: manager: accepting
+[2022-05-20 16:13:43.790382]: connection: full sync
+[2022-05-20 16:13:43.791175]: connection: sync end, send 0 cards
+[2022-05-20 16:13:43.791898]: connection: reading socket
+[2022-05-20 16:13:45.792996]: connection: query - ping
+[2022-05-20 16:13:45.793146]: connection: reading socket
+[2022-05-20 16:13:46.791784]: connection: read until failed, closing connection
+[2022-05-20 16:13:46.797182]: connection: waiting workThread stop
+[2022-05-20 16:13:46.797721]: connection: closing socket
+[2022-05-20 16:13:47.791924]: connect get
+[2022-05-20 16:13:47.793085]: manager: new connection
+[2022-05-20 16:13:47.793248]: connection: started
+[2022-05-20 16:13:47.793359]: manager: accepting
+[2022-05-20 16:13:47.793381]: connection: full sync
+[2022-05-20 16:13:47.794647]: connection: sync end, send 0 cards
+[2022-05-20 16:13:47.798555]: connection: reading socket
+[2022-05-20 16:13:47.798826]: connection: query - ping
+[2022-05-20 16:13:47.798904]: connection: reading socket
+[2022-05-20 16:13:49.796306]: connection: query - ping
+[2022-05-20 16:13:49.796477]: connection: reading socket
+[2022-05-20 16:13:51.799245]: connection: query - ping
+[2022-05-20 16:13:51.799470]: connection: reading socket
+[2022-05-20 16:13:53.802450]: connection: query - ping
+[2022-05-20 16:13:53.802878]: connection: reading socket
+[2022-05-20 16:13:55.807159]: connection: query - ping
+[2022-05-20 16:13:55.807317]: connection: reading socket
+[2022-05-20 16:13:57.810744]: connection: query - ping
+[2022-05-20 16:13:57.811307]: connection: reading socket
+[2022-05-20 16:13:59.813800]: connection: query - ping
+[2022-05-20 16:13:59.813960]: connection: reading socket
+[2022-05-20 16:14:01.816951]: connection: query - ping
+[2022-05-20 16:14:01.817105]: connection: reading socket
+[2022-05-20 16:14:03.819897]: connection: query - ping
+[2022-05-20 16:14:03.820226]: connection: reading socket
+[2022-05-20 16:14:05.825580]: connection: query - ping
+[2022-05-20 16:14:05.826102]: connection: reading socket
+[2022-05-20 16:14:07.831242]: connection: query - ping
+[2022-05-20 16:14:07.831416]: connection: reading socket
+[2022-05-20 16:14:09.834405]: connection: query - ping
+[2022-05-20 16:14:09.834565]: connection: reading socket
+[2022-05-20 16:14:11.837539]: connection: query - ping
+[2022-05-20 16:14:11.837933]: connection: reading socket
+[2022-05-20 16:14:13.840359]: connection: query - ping
+[2022-05-20 16:14:13.840511]: connection: reading socket
+[2022-05-20 16:14:15.843669]: connection: query - ping
+[2022-05-20 16:14:15.844005]: connection: reading socket
+[2022-05-20 16:14:17.846607]: connection: query - ping
+[2022-05-20 16:14:17.846781]: connection: reading socket
+[2022-05-20 16:14:19.849847]: connection: query - ping
+[2022-05-20 16:14:19.850062]: connection: reading socket
+[2022-05-20 16:14:21.853862]: connection: query - ping
+[2022-05-20 16:14:21.854024]: connection: reading socket
+[2022-05-20 16:14:23.857521]: connection: query - ping
+[2022-05-20 16:14:23.857678]: connection: reading socket
+[2022-05-20 16:14:25.860392]: connection: query - ping
+[2022-05-20 16:14:25.860798]: connection: reading socket
+[2022-05-20 16:14:27.863647]: connection: query - ping
+[2022-05-20 16:14:27.864042]: connection: reading socket
+[2022-05-20 16:14:29.866961]: connection: query - ping
+[2022-05-20 16:14:29.867122]: connection: reading socket
+[2022-05-20 16:14:31.870794]: connection: query - ping
+[2022-05-20 16:14:31.870987]: connection: reading socket
+[2022-05-20 16:14:33.874951]: connection: query - ping
+[2022-05-20 16:14:33.875170]: connection: reading socket
+[2022-05-20 16:14:35.877764]: connection: query - ping
+[2022-05-20 16:14:35.877982]: connection: reading socket
+[2022-05-20 16:14:37.880718]: connection: query - ping
+[2022-05-20 16:14:37.880941]: connection: reading socket
+[2022-05-20 16:14:39.884338]: connection: query - ping
+[2022-05-20 16:14:39.884510]: connection: reading socket
+[2022-05-20 16:14:41.887478]: connection: query - ping
+[2022-05-20 16:14:41.887650]: connection: reading socket
+[2022-05-20 16:14:43.891472]: connection: query - ping
+[2022-05-20 16:14:43.891707]: connection: reading socket
+[2022-05-20 16:14:45.895449]: connection: query - ping
+[2022-05-20 16:14:45.895755]: connection: reading socket
+[2022-05-20 16:14:47.898776]: connection: query - ping
+[2022-05-20 16:14:47.898963]: connection: reading socket
+[2022-05-20 16:14:49.901808]: connection: query - ping
+[2022-05-20 16:14:49.901962]: connection: reading socket
+[2022-05-20 16:14:51.905115]: connection: query - ping
+[2022-05-20 16:14:51.905554]: connection: reading socket
+[2022-05-20 16:14:53.907545]: connection: query - ping
+[2022-05-20 16:14:53.907757]: connection: reading socket
+[2022-05-20 16:14:55.910665]: connection: query - ping
+[2022-05-20 16:14:55.911095]: connection: reading socket
+[2022-05-20 16:14:57.918224]: connection: query - ping
+[2022-05-20 16:14:57.918382]: connection: reading socket
+[2022-05-20 16:14:59.921459]: connection: query - ping
+[2022-05-20 16:14:59.921612]: connection: reading socket
+[2022-05-20 16:15:01.924431]: connection: query - ping
+[2022-05-20 16:15:01.924580]: connection: reading socket
+[2022-05-20 16:15:03.927721]: connection: query - ping
+[2022-05-20 16:15:03.928185]: connection: reading socket
+[2022-05-20 16:15:05.930970]: connection: query - ping
+[2022-05-20 16:15:05.931155]: connection: reading socket
+[2022-05-20 16:15:07.933752]: connection: query - ping
+[2022-05-20 16:15:07.933936]: connection: reading socket
+[2022-05-20 16:15:09.936939]: connection: query - ping
+[2022-05-20 16:15:09.937179]: connection: reading socket
+[2022-05-20 16:15:11.940473]: connection: query - ping
+[2022-05-20 16:15:11.940636]: connection: reading socket
+[2022-05-20 16:15:13.944005]: connection: query - ping
+[2022-05-20 16:15:13.944196]: connection: reading socket
+[2022-05-20 16:15:15.954814]: connection: query - ping
+[2022-05-20 16:15:15.955087]: connection: reading socket
+[2022-05-20 16:15:17.957766]: connection: query - ping
+[2022-05-20 16:15:17.958161]: connection: reading socket
+[2022-05-20 16:15:19.961603]: connection: query - ping
+[2022-05-20 16:15:19.961835]: connection: reading socket
+[2022-05-20 16:15:21.965390]: connection: query - ping
+[2022-05-20 16:15:21.965785]: connection: reading socket
+[2022-05-20 16:15:23.986265]: connection: query - ping
+[2022-05-20 16:15:23.986419]: connection: reading socket
+[2022-05-20 16:15:25.989197]: connection: query - ping
+[2022-05-20 16:15:25.989348]: connection: reading socket
+[2022-05-20 16:15:27.993941]: connection: query - ping
+[2022-05-20 16:15:27.994099]: connection: reading socket
+[2022-05-20 16:15:29.997409]: connection: query - ping
+[2022-05-20 16:15:29.997567]: connection: reading socket
+[2022-05-20 16:15:32.000742]: connection: query - ping
+[2022-05-20 16:15:32.000910]: connection: reading socket
+[2022-05-20 16:15:34.007141]: connection: query - ping
+[2022-05-20 16:15:34.007320]: connection: reading socket
+[2022-05-20 16:15:36.013611]: connection: query - ping
+[2022-05-20 16:15:36.013766]: connection: reading socket
+[2022-05-20 16:15:38.016469]: connection: query - ping
+[2022-05-20 16:15:38.016633]: connection: reading socket
+[2022-05-20 16:15:40.019528]: connection: query - ping
+[2022-05-20 16:15:40.019719]: connection: reading socket
+[2022-05-20 16:15:42.022608]: connection: query - ping
+[2022-05-20 16:15:42.022799]: connection: reading socket
+[2022-05-20 16:15:44.026204]: connection: query - ping
+[2022-05-20 16:15:44.026366]: connection: reading socket
+[2022-05-20 16:15:46.030660]: connection: query - ping
+[2022-05-20 16:15:46.031109]: connection: reading socket
+[2022-05-20 16:15:48.033385]: connection: query - ping
+[2022-05-20 16:15:48.033545]: connection: reading socket
+[2022-05-20 16:15:50.036396]: connection: query - ping
+[2022-05-20 16:15:50.036553]: connection: reading socket
+[2022-05-20 16:15:52.039460]: connection: query - ping
+[2022-05-20 16:15:52.039641]: connection: reading socket
+[2022-05-20 16:15:54.042447]: connection: query - ping
+[2022-05-20 16:15:54.042614]: connection: reading socket
+[2022-05-20 16:15:56.056064]: connection: query - ping
+[2022-05-20 16:15:56.056214]: connection: reading socket
+[2022-05-20 16:15:58.059880]: connection: query - ping
+[2022-05-20 16:15:58.060043]: connection: reading socket
+[2022-05-20 16:16:00.062916]: connection: query - ping
+[2022-05-20 16:16:00.063098]: connection: reading socket
+[2022-05-20 16:16:02.066760]: connection: query - ping
+[2022-05-20 16:16:02.067159]: connection: reading socket
+[2022-05-20 16:16:04.071719]: connection: query - ping
+[2022-05-20 16:16:04.072498]: connection: reading socket
+[2022-05-20 16:16:06.077096]: connection: query - ping
+[2022-05-20 16:16:06.077269]: connection: reading socket
+[2022-05-20 16:16:08.080078]: connection: query - ping
+[2022-05-20 16:16:08.080426]: connection: reading socket
+[2022-05-20 16:16:10.083197]: connection: query - ping
+[2022-05-20 16:16:10.083354]: connection: reading socket
+[2022-05-20 16:16:12.086286]: connection: query - ping
+[2022-05-20 16:16:12.086451]: connection: reading socket
+[2022-05-20 16:16:14.089658]: connection: query - ping
+[2022-05-20 16:16:14.089811]: connection: reading socket
+[2022-05-20 16:16:16.093558]: connection: query - ping
+[2022-05-20 16:16:16.094017]: connection: reading socket
+[2022-05-20 16:16:18.096648]: connection: query - ping
+[2022-05-20 16:16:18.097109]: connection: reading socket
+[2022-05-20 16:16:20.100165]: connection: query - ping
+[2022-05-20 16:16:20.100318]: connection: reading socket
+[2022-05-20 16:16:22.105670]: connection: query - ping
+[2022-05-20 16:16:22.105990]: connection: reading socket
+[2022-05-20 16:16:24.109285]: connection: query - ping
+[2022-05-20 16:16:24.109435]: connection: reading socket
+[2022-05-20 16:16:26.112347]: connection: query - ping
+[2022-05-20 16:16:26.112808]: connection: reading socket
+[2022-05-20 16:16:27.258681]: connection: query - personal card added
+[2022-05-20 16:16:27.259075]: manager: personal card added
+[2022-05-20 16:16:27.259211]: connection: reading socket
+[2022-05-20 16:16:27.263858]: connection: query - get image
+[2022-05-20 16:16:27.264047]: connection: sending image
+[2022-05-20 16:16:27.264278]: connection: sending Artem.jpg

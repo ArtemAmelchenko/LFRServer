@@ -1,11 +1,11 @@
 #ifndef LFRCONNECTION_H
 #define LFRCONNECTION_H
-#include <boost/asio.hpp>
 #include <QUuid>
 #include <QDateTime>
 #include <QJsonDocument>
 #include <queue>
 #include <thread>
+#include <boost/asio.hpp>
 #include "personalcardmanager.h"
 
 struct PassingEvent
@@ -41,6 +41,10 @@ public:
 
 	void restartQuery();
 
+	bool getImage(const std::string &fileName);
+
+    bool isEnd() const;
+
 	friend class LFRConnectionsManager;
 
 private:
@@ -54,6 +58,10 @@ private:
 
     bool recvPassingEvent(PassingEvent &event, int millisec = 3000);
     bool recvPersonalCard(PersonalCard &card, int millisec = 3000);
+    bool recvImage(int millisec = 3000);
+    void writeImage(const std::string &data, const std::string &fileName);
+
+    void sendImage();
 
 	bool sendRestartQuery();
 
@@ -63,11 +71,12 @@ private:
     boost::asio::io_context context;
     boost::asio::ip::tcp::socket socket;
 	bool running;
+    bool end;
 
     boost::asio::streambuf buffer;
     std::istream in;
 
-	std::shared_ptr<LFRConnectionsManager> manager;
+    std::shared_ptr<LFRConnectionsManager> manager;
 
     QDateTime lastPing;
 

@@ -1,13 +1,22 @@
+#define BOOST_LOG_DYN_LINK 1
 #include "personalcardmanager.h"
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QJsonObject>
 #include <QJsonValue>
 #include <iostream>
+#include <boost/log/trivial.hpp>
 
 const QList<PersonalCard> *PersonalCardManager::personalCards() const
 {
-	return &cards;
+    return &cards;
+}
+
+void PersonalCardManager::addCard(const PersonalCard &card)
+{
+    auto it = std::find_if(cards.begin(), cards.end(), [&](const PersonalCard &card){ return card.id == card.id; });
+    if (it == cards.end())
+        cards.append(card);
 }
 
 void PersonalCardManager::editCard(const PersonalCard &card)
@@ -33,7 +42,8 @@ void PersonalCardManager::deleteCard(const QUuid &cardID)
 
 void PersonalCardManager::loadCards(const QString &filename)
 {
-	cards.clear();
+    BOOST_LOG_TRIVIAL(debug) << "card manager start loading cards";
+    cards.clear();
 
 	PersonalCard card;
 
@@ -61,6 +71,7 @@ void PersonalCardManager::loadCards(const QString &filename)
 		card.contrastCorrection = obj.take("contrast").toInt();
 		cards.append(card);
 	}
+    BOOST_LOG_TRIVIAL(debug) << "card manager readed " << cards.size() << " cards";
 }
 
 void PersonalCardManager::saveCards(const QString &filename)

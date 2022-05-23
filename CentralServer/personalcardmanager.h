@@ -23,8 +23,9 @@ class PersonalCardManager
 public:
 	const QList<PersonalCard> *personalCards() const;
 
+    void addCard(const PersonalCard &card);
     void editCard(const PersonalCard &card);
-	void deleteCard(int cardIndex);
+    void deleteCard(int cardIndex);
     void deleteCard(const QUuid &cardID);
 	void loadCards(const QString &filename);
 	void saveCards(const QString &filename);

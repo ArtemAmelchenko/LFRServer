@@ -1,0 +1,178 @@
+[2022-05-19 01:54:28.390674]: connect get
+[2022-05-19 01:54:28.391661]: manager: new connection
+[2022-05-19 01:54:28.391742]: connection: started
+[2022-05-19 01:54:28.391790]: manager: accepting
+[2022-05-19 01:54:28.391801]: connection: full sync
+[2022-05-19 01:54:28.391868]: connection: sync end, send 1 cards
+[2022-05-19 01:54:28.391921]: connection: reading socket
+[2022-05-19 01:54:30.495674]: connection: query - ping
+[2022-05-19 01:54:30.495747]: connection: reading socket
+[2022-05-19 01:54:32.498171]: connection: query - ping
+[2022-05-19 01:54:32.498241]: connection: reading socket
+[2022-05-19 01:54:34.501242]: connection: query - ping
+[2022-05-19 01:54:34.501322]: connection: reading socket
+[2022-05-19 01:54:36.504319]: connection: query - ping
+[2022-05-19 01:54:36.504396]: connection: reading socket
+[2022-05-19 01:54:38.507944]: connection: query - ping
+[2022-05-19 01:54:38.508017]: connection: reading socket
+[2022-05-19 01:54:40.510943]: connection: query - ping
+[2022-05-19 01:54:40.511023]: connection: reading socket
+[2022-05-19 01:54:42.514578]: connection: query - ping
+[2022-05-19 01:54:42.514649]: connection: reading socket
+[2022-05-19 01:54:44.517212]: connection: query - ping
+[2022-05-19 01:54:44.517283]: connection: reading socket
+[2022-05-19 01:54:46.522042]: connection: query - ping
+[2022-05-19 01:54:46.522116]: connection: reading socket
+[2022-05-19 01:54:48.524748]: connection: query - ping
+[2022-05-19 01:54:48.524818]: connection: reading socket
+[2022-05-19 01:54:48.677349]: connection: query - personal card edited
+[2022-05-19 01:54:48.677489]: manager: personal card edited
+[2022-05-19 01:54:48.677520]: connection: reading socket
+[2022-05-19 01:54:50.728050]: connection: query - ping
+[2022-05-19 01:54:50.728123]: connection: reading socket
+[2022-05-19 01:54:52.731382]: connection: query - ping
+[2022-05-19 01:54:52.731455]: connection: reading socket
+[2022-05-19 01:54:54.735227]: connection: query - ping
+[2022-05-19 01:54:54.735298]: connection: reading socket
+[2022-05-19 01:54:56.737947]: connection: query - ping
+[2022-05-19 01:54:56.738020]: connection: reading socket
+[2022-05-19 01:54:58.741085]: connection: query - ping
+[2022-05-19 01:54:58.741158]: connection: reading socket
+[2022-05-19 01:55:00.744253]: connection: query - ping
+[2022-05-19 01:55:00.744325]: connection: reading socket
+[2022-05-19 01:55:02.747961]: connection: query - ping
+[2022-05-19 01:55:02.748033]: connection: reading socket
+[2022-05-19 01:55:04.750795]: connection: query - ping
+[2022-05-19 01:55:04.750867]: connection: reading socket
+[2022-05-19 01:55:06.753991]: connection: query - ping
+[2022-05-19 01:55:06.754066]: connection: reading socket
+[2022-05-19 01:55:08.757060]: connection: query - ping
+[2022-05-19 01:55:08.757130]: connection: reading socket
+[2022-05-19 01:55:10.760041]: connection: query - ping
+[2022-05-19 01:55:10.760113]: connection: reading socket
+[2022-05-19 01:55:12.762887]: connection: query - ping
+[2022-05-19 01:55:12.762960]: connection: reading socket
+[2022-05-19 01:55:12.957073]: connection: query - personal card deleted
+[2022-05-19 01:55:12.957223]: manager: personal card deleted
+[2022-05-19 01:55:12.957253]: connection: reading socket
+[2022-05-19 01:55:13.839728]: connection: read until failed, closing connection
+[2022-05-19 01:55:13.858947]: connection: waiting workThread stop
+[2022-05-19 01:55:13.859028]: connection: closing socket
+[2022-05-19 01:56:57.444064]: connect get
+[2022-05-19 01:56:57.444985]: manager: new connection
+[2022-05-19 01:56:57.445066]: connection: started
+[2022-05-19 01:56:57.445108]: manager: accepting
+[2022-05-19 01:56:57.445121]: connection: full sync
+[2022-05-19 01:56:57.445208]: connection: sync end, send 1 cards
+[2022-05-19 01:56:57.445276]: connection: reading socket
+[2022-05-19 01:56:57.445310]: connection: send personal card edited
+[2022-05-19 01:56:57.445352]: connection: send personal card deleted
+[2022-05-19 01:56:59.550200]: connection: query - ping
+[2022-05-19 01:56:59.550277]: connection: reading socket
+[2022-05-19 01:57:01.553119]: connection: query - ping
+[2022-05-19 01:57:01.553192]: connection: reading socket
+[2022-05-19 01:57:03.556268]: connection: query - ping
+[2022-05-19 01:57:03.556340]: connection: reading socket
+[2022-05-19 01:57:05.559373]: connection: query - ping
+[2022-05-19 01:57:05.559446]: connection: reading socket
+[2022-05-19 01:57:07.562657]: connection: query - ping
+[2022-05-19 01:57:07.562729]: connection: reading socket
+[2022-05-19 01:57:09.565767]: connection: query - ping
+[2022-05-19 01:57:09.565833]: connection: reading socket
+[2022-05-19 01:57:11.569416]: connection: query - ping
+[2022-05-19 01:57:11.569489]: connection: reading socket
+[2022-05-19 01:57:13.572139]: connection: query - ping
+[2022-05-19 01:57:13.572210]: connection: reading socket
+[2022-05-19 01:57:15.575806]: connection: query - ping
+[2022-05-19 01:57:15.575882]: connection: reading socket
+[2022-05-19 01:57:17.578524]: connection: query - ping
+[2022-05-19 01:57:17.578596]: connection: reading socket
+[2022-05-19 01:57:19.581679]: connection: query - ping
+[2022-05-19 01:57:19.581750]: connection: reading socket
+[2022-05-19 01:57:21.584430]: connection: query - ping
+[2022-05-19 01:57:21.584507]: connection: reading socket
+[2022-05-19 01:57:23.588145]: connection: query - ping
+[2022-05-19 01:57:23.588213]: connection: reading socket
+[2022-05-19 01:57:25.590986]: connection: query - ping
+[2022-05-19 01:57:25.591061]: connection: reading socket
+[2022-05-19 01:57:27.594332]: connection: query - ping
+[2022-05-19 01:57:27.594404]: connection: reading socket
+[2022-05-19 01:57:29.597416]: connection: query - ping
+[2022-05-19 01:57:29.597482]: connection: reading socket
+[2022-05-19 01:57:31.601113]: connection: query - ping
+[2022-05-19 01:57:31.601191]: connection: reading socket
+[2022-05-19 01:57:33.603797]: connection: query - ping
+[2022-05-19 01:57:33.603868]: connection: reading socket
+[2022-05-19 01:57:35.607168]: connection: query - ping
+[2022-05-19 01:57:35.607244]: connection: reading socket
+[2022-05-19 01:57:37.609856]: connection: query - ping
+[2022-05-19 01:57:37.609927]: connection: reading socket
+[2022-05-19 01:57:39.613240]: connection: query - ping
+[2022-05-19 01:57:39.613317]: connection: reading socket
+[2022-05-19 01:57:41.615979]: connection: query - ping
+[2022-05-19 01:57:41.616047]: connection: reading socket
+[2022-05-19 01:57:43.619370]: connection: query - ping
+[2022-05-19 01:57:43.619445]: connection: reading socket
+[2022-05-19 01:57:45.622386]: connection: query - ping
+[2022-05-19 01:57:45.622450]: connection: reading socket
+[2022-05-19 01:57:47.625536]: connection: query - ping
+[2022-05-19 01:57:47.625606]: connection: reading socket
+[2022-05-19 01:57:49.628920]: connection: query - ping
+[2022-05-19 01:57:49.628994]: connection: reading socket
+[2022-05-19 01:57:51.632556]: connection: query - ping
+[2022-05-19 01:57:51.632650]: connection: reading socket
+[2022-05-19 01:57:53.635508]: connection: query - ping
+[2022-05-19 01:57:53.635579]: connection: reading socket
+[2022-05-19 01:57:55.638547]: connection: query - ping
+[2022-05-19 01:57:55.638620]: connection: reading socket
+[2022-05-19 01:57:57.642438]: connection: query - ping
+[2022-05-19 01:57:57.642508]: connection: reading socket
+[2022-05-19 01:57:59.645080]: connection: query - ping
+[2022-05-19 01:57:59.645154]: connection: reading socket
+[2022-05-19 01:58:01.648535]: connection: query - ping
+[2022-05-19 01:58:01.648623]: connection: reading socket
+[2022-05-19 01:58:03.651207]: connection: query - ping
+[2022-05-19 01:58:03.651280]: connection: reading socket
+[2022-05-19 01:58:05.654298]: connection: query - ping
+[2022-05-19 01:58:05.654366]: connection: reading socket
+[2022-05-19 01:58:07.657342]: connection: query - ping
+[2022-05-19 01:58:07.657406]: connection: reading socket
+[2022-05-19 01:58:09.661153]: connection: query - ping
+[2022-05-19 01:58:09.661225]: connection: reading socket
+[2022-05-19 01:58:11.664078]: connection: query - ping
+[2022-05-19 01:58:11.664152]: connection: reading socket
+[2022-05-19 01:58:13.667781]: connection: query - ping
+[2022-05-19 01:58:13.667854]: connection: reading socket
+[2022-05-19 01:58:15.670295]: connection: query - ping
+[2022-05-19 01:58:15.670369]: connection: reading socket
+[2022-05-19 01:58:17.673709]: connection: query - ping
+[2022-05-19 01:58:17.673783]: connection: reading socket
+[2022-05-19 01:58:19.676855]: connection: query - ping
+[2022-05-19 01:58:19.676930]: connection: reading socket
+[2022-05-19 01:58:21.680413]: connection: query - ping
+[2022-05-19 01:58:21.680490]: connection: reading socket
+[2022-05-19 01:58:23.683170]: connection: query - ping
+[2022-05-19 01:58:23.683243]: connection: reading socket
+[2022-05-19 01:58:25.686404]: connection: query - ping
+[2022-05-19 01:58:25.686473]: connection: reading socket
+[2022-05-19 01:58:27.689537]: connection: query - ping
+[2022-05-19 01:58:27.689612]: connection: reading socket
+[2022-05-19 01:58:29.693254]: connection: query - ping
+[2022-05-19 01:58:29.693328]: connection: reading socket
+[2022-05-19 01:58:31.696243]: connection: query - ping
+[2022-05-19 01:58:31.696312]: connection: reading socket
+[2022-05-19 01:58:33.700063]: connection: query - ping
+[2022-05-19 01:58:33.700136]: connection: reading socket
+[2022-05-19 01:58:35.702702]: connection: query - ping
+[2022-05-19 01:58:35.702768]: connection: reading socket
+[2022-05-19 01:58:37.705907]: connection: query - ping
+[2022-05-19 01:58:37.705976]: connection: reading socket
+[2022-05-19 01:58:39.709199]: connection: query - ping
+[2022-05-19 01:58:39.709270]: connection: reading socket
+[2022-05-19 01:58:41.712157]: connection: query - ping
+[2022-05-19 01:58:41.712229]: connection: reading socket
+[2022-05-19 01:58:43.715481]: connection: query - ping
+[2022-05-19 01:58:43.715555]: connection: reading socket
+[2022-05-19 01:58:45.014435]: connection: read until failed, closing connection
+[2022-05-19 01:58:45.031820]: connection: waiting workThread stop
+[2022-05-19 01:58:45.031899]: connection: closing socket
