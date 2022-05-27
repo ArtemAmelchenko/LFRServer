@@ -117,7 +117,10 @@ void LFRConnection::start()
                 else if (msg == "image added")
                 {
                     BOOST_LOG_TRIVIAL(debug) << "connection: recieving image";
-                    if (!recvImage())
+					string fileName;
+					read_until(socket, buffer, "\n");
+					getline(in, fileName);
+					if (!recvImage(fileName))
                     {
                         BOOST_LOG_TRIVIAL(debug) << "connection: failed recieve image";
                         running = false;
@@ -200,13 +203,12 @@ void LFRConnection::restartQuery()
 
 bool LFRConnection::getImage(const string &fileName)
 {
-	BOOST_LOG_TRIVIAL(debug) << "conn: getting image" << fileName.toStdString();
+	BOOST_LOG_TRIVIAL(debug) << "conn: getting image" << fileName;
 	string msg = "get image\n";
-	msg += fileName.toStdString() + "\n";
+	msg += fileName + "\n";
 	boost::asio::const_buffer buff(msg.data(), msg.size());
 	boost::asio::write(socket, buff);
-	lastSendingTime = QDateTime::currentDateTime();
-	return recvImage(fileName.toStdString());
+	return recvImage(fileName);
 }
 
 bool LFRConnection::isEnd() const
@@ -298,7 +300,7 @@ PersonalCard LFRConnection::personalCardFromJSON(const string &str)
     QJsonDocument doc = QJsonDocument::fromJson(QByteArray::fromStdString(str));
     QJsonObject obj = doc.object();
 	card.id = QUuid(obj.take("id").toString());
-    card.imagePath = obj.take("imagepath").toString();
+	card.imagePath = obj.take("imagePath").toString();
     card.lastname = obj.take("lastname").toString();
     card.name = obj.take("name").toString();
     card.post = obj.take("post").toString();
@@ -357,20 +359,17 @@ bool LFRConnection::recvPersonalCard(PersonalCard &card, int millisec)
         std::string msg(std::istreambuf_iterator<char>(in), {});
         msg = msg.substr(0, msg.size() - 5);
         card = personalCardFromJSON(msg);
-    });
+	});
     context.reset();
     context.run_for(std::chrono::milliseconds(millisec));
     return recv;
 }
 
-bool LFRConnection::recvImage(int millisec)
+bool LFRConnection::recvImage(const string& fileName, int millisec)
 {
     atomic<bool> recv(false);
     int length;
-    string fileName;
-    read_until(socket, buffer, "\n");
-    getline(in, fileName);
-    BOOST_LOG_TRIVIAL(debug) << "connection: recieving " << fileName;
+	BOOST_LOG_TRIVIAL(debug) << "connection: recieving " << fileName;
     read_until(socket, buffer, "\n");
     string len;
     getline(in, len);
@@ -416,7 +415,7 @@ void LFRConnection::sendImage()
     f.close();
 
     int length = data.size();
-    string strLen = to_string(length);
+	string strLen = to_string(length) + "\n";
     BOOST_LOG_TRIVIAL(debug) << "connection: sending length " << strLen;
     write(socket, const_buffer(strLen.data(), strLen.size()));
     write(socket, const_buffer(data.data(), data.size()));

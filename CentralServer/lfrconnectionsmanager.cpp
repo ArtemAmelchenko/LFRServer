@@ -51,10 +51,11 @@ void LFRConnectionsManager::personalCardAdded(const PersonalCard &card, LFRConne
 	QFile f(card.imagePath);
 	if (!f.exists())
 	{
-		if (!connection->getImage(card.imagePath))
-			continue;
+		BOOST_LOG_TRIVIAL(debug) << "manager: getting image " << card.imagePath.toStdString();
+		connection->getImage(card.imagePath.toStdString());
 	}
 	cardManager.addCard(card);
+	cardManager.saveCards("Cards.json");
 	for (auto &t : connections)
         if (t.get() != connection)
             t->personalCardAdded(card);
@@ -63,8 +64,15 @@ void LFRConnectionsManager::personalCardAdded(const PersonalCard &card, LFRConne
 void LFRConnectionsManager::personalCardEdited(const PersonalCard &card, LFRConnection *connection)
 {
     BOOST_LOG_TRIVIAL(debug) << "manager: personal card edited";
-    cardManager.editCard(card);
-    for (auto &t : connections)
+	QFile f(card.imagePath);
+	if (!f.exists())
+	{
+		BOOST_LOG_TRIVIAL(debug) << "manager: getting image " << card.imagePath.toStdString();
+		connection->getImage(card.imagePath.toStdString());
+	}
+	cardManager.editCard(card);
+	cardManager.saveCards("Cards.json");
+	for (auto &t : connections)
         if (t.get() != connection)
             t->personalCardEdited(card);
 }
@@ -72,8 +80,14 @@ void LFRConnectionsManager::personalCardEdited(const PersonalCard &card, LFRConn
 void LFRConnectionsManager::personalCardDeleted(const PersonalCard &card, LFRConnection *connection)
 {
     BOOST_LOG_TRIVIAL(debug) << "manager: personal card deleted";
-    cardManager.deleteCard(card.id);
-    for (auto &t : connections)
+	QFile f(card.imagePath);
+	if (f.exists())
+	{
+		f.remove();
+	}
+	cardManager.deleteCard(card.id);
+	cardManager.saveCards("Cards.json");
+	for (auto &t : connections)
         if (t.get() != connection)
             t->personalCardDeleted(card);
 }

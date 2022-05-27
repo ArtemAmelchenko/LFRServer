@@ -14,14 +14,14 @@ const QList<PersonalCard> *PersonalCardManager::personalCards() const
 
 void PersonalCardManager::addCard(const PersonalCard &card)
 {
-    auto it = std::find_if(cards.begin(), cards.end(), [&](const PersonalCard &card){ return card.id == card.id; });
+	auto it = std::find_if(cards.begin(), cards.end(), [&](const PersonalCard &c){ return card.id == c.id; });
     if (it == cards.end())
         cards.append(card);
 }
 
 void PersonalCardManager::editCard(const PersonalCard &card)
 {
-    auto it = std::find_if(cards.begin(), cards.end(), [&](const PersonalCard &card){ return card.id == card.id; });
+	auto it = std::find_if(cards.begin(), cards.end(), [&](const PersonalCard &c){ return card.id == c.id; });
 	if (it == cards.end())
         cards.append(card);
     else

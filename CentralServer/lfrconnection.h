@@ -58,7 +58,7 @@ private:
 
     bool recvPassingEvent(PassingEvent &event, int millisec = 3000);
     bool recvPersonalCard(PersonalCard &card, int millisec = 3000);
-    bool recvImage(int millisec = 3000);
+	bool recvImage(const std::string &fileName, int millisec = 3000);
     void writeImage(const std::string &data, const std::string &fileName);
 
     void sendImage();
