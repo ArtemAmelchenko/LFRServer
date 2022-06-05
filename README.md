@@ -3,6 +3,20 @@
 * Поддерживаются дистрибутивы основанные на пакетной базе Debian 10 и выше.
 * С/С++
 
+## <div align="center">Развертывание в docker</div>
+
+### Клонировать репозиторий 
+git clone https://github.com/ArtemAmelchenko/LFRServer.git
+
+### Собрать контейнер
+```
+sudo dockerBuild.sh
+```
+### Запустить контейнер
+```
+sudo dockerRun.sh
+```
+
 ## <div align="center">Развертывание сервера на Ubuntu Server >= 20.04.4 LTS.</div>
 ### Установка необходимых зависимостей для Linux
 

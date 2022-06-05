@@ -64,6 +64,7 @@ private:
 
         http::async_read(socket_, buffer_, request_, [self](beast::error_code ec, std::size_t bytes_transferred)
         {
+            BOOST_LOG_TRIVIAL(debug) << "request";
             boost::ignore_unused(bytes_transferred);
             if(ec)
                 std::cout << ec.message() << std::endl;
@@ -177,7 +178,7 @@ int main(int argc, char* argv[])
     BOOST_LOG_TRIVIAL(debug) << "Main start" << std::flush;
     try
     {
-		auto const address = net::ip::make_address("127.0.0.1");
+        auto const address = net::ip::make_address("0.0.0.0");
         unsigned short port = 8080;
 
         net::io_context ioc{1};

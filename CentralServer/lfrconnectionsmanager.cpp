@@ -10,12 +10,7 @@ using namespace std;
 LFRConnectionsManager::LFRConnectionsManager(boost::asio::ip::tcp::endpoint ep)
     : acceptor(context, ep)
 {
-	cardManager.loadCards("Cards.json");
-}
-
-LFRConnectionsManager::~LFRConnectionsManager()
-{
-	cardManager.saveCards("Cards.json");
+    cardManager.loadCards("Cards.json");
 }
 
 void LFRConnectionsManager::accepting()
@@ -47,16 +42,9 @@ void LFRConnectionsManager::run()
 
 void LFRConnectionsManager::personalCardAdded(const PersonalCard &card, LFRConnection *connection)
 {
-	BOOST_LOG_TRIVIAL(debug) << "manager: personal card added";
-	QFile f(card.imagePath);
-	if (!f.exists())
-	{
-		BOOST_LOG_TRIVIAL(debug) << "manager: getting image " << card.imagePath.toStdString();
-		connection->getImage(card.imagePath.toStdString());
-	}
-	cardManager.addCard(card);
-	cardManager.saveCards("Cards.json");
-	for (auto &t : connections)
+    BOOST_LOG_TRIVIAL(debug) << "manager: personal card added";
+    cardManager.addCard(card);
+    for (auto &t : connections)
         if (t.get() != connection)
             t->personalCardAdded(card);
 }
@@ -64,15 +52,8 @@ void LFRConnectionsManager::personalCardAdded(const PersonalCard &card, LFRConne
 void LFRConnectionsManager::personalCardEdited(const PersonalCard &card, LFRConnection *connection)
 {
     BOOST_LOG_TRIVIAL(debug) << "manager: personal card edited";
-	QFile f(card.imagePath);
-	if (!f.exists())
-	{
-		BOOST_LOG_TRIVIAL(debug) << "manager: getting image " << card.imagePath.toStdString();
-		connection->getImage(card.imagePath.toStdString());
-	}
-	cardManager.editCard(card);
-	cardManager.saveCards("Cards.json");
-	for (auto &t : connections)
+    cardManager.editCard(card);
+    for (auto &t : connections)
         if (t.get() != connection)
             t->personalCardEdited(card);
 }
@@ -80,14 +61,8 @@ void LFRConnectionsManager::personalCardEdited(const PersonalCard &card, LFRConn
 void LFRConnectionsManager::personalCardDeleted(const PersonalCard &card, LFRConnection *connection)
 {
     BOOST_LOG_TRIVIAL(debug) << "manager: personal card deleted";
-	QFile f(card.imagePath);
-	if (f.exists())
-	{
-		f.remove();
-	}
-	cardManager.deleteCard(card.id);
-	cardManager.saveCards("Cards.json");
-	for (auto &t : connections)
+    cardManager.deleteCard(card.id);
+    for (auto &t : connections)
         if (t.get() != connection)
             t->personalCardDeleted(card);
 }
@@ -96,19 +71,19 @@ void LFRConnectionsManager::newPassingEvent(const PassingEvent &event)
 {
     string str;
     str += "Personal ID: ";
-    str += event.id.toString().toStdString() + " ";
+    str += event.id + " ";
     if (event.passed)
         str += (event.enterance) ? ("Entered") : ("Exited");
     else
         str += (event.enterance) ? ("Tried enter") : ("Tried exit");
     str += " ";
     str += "Time: ";
-    str += event.time.toString("dd.MM.yyyy hh:mm:ss").toStdString();
+    str += event.time;
 
     BOOST_LOG_TRIVIAL(debug) << "manager: new passing event: " << str;
 }
 
-const QList<PersonalCard> *LFRConnectionsManager::personalCards() const
+const std::vector<PersonalCard> *LFRConnectionsManager::personalCards() const
 {
     return cardManager.personalCards();
 }

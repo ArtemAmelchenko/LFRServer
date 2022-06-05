@@ -1,19 +1,17 @@
 #ifndef LFRCONNECTION_H
 #define LFRCONNECTION_H
-#include <QUuid>
-#include <QDateTime>
-#include <QJsonDocument>
 #include <queue>
 #include <thread>
+#include <chrono>
 #include <boost/asio.hpp>
 #include "personalcardmanager.h"
 
 struct PassingEvent
 {
-    QUuid id;
+    std::string id;
 	bool enterance;
 	bool passed;
-	QDateTime time;
+    std::string time;
 };
 
 struct Query
@@ -33,15 +31,13 @@ public:
 
 	void stop();
 
-    void fullSyncronisation(const QList<PersonalCard> *personalCards);
+    void fullSyncronisation(const std::vector<PersonalCard> *personalCards);
 
 	void personalCardAdded(const PersonalCard &card);
 	void personalCardEdited(const PersonalCard &card);
 	void personalCardDeleted(const PersonalCard &card);
 
 	void restartQuery();
-
-	bool getImage(const std::string &fileName);
 
     bool isEnd() const;
 
@@ -58,7 +54,7 @@ private:
 
     bool recvPassingEvent(PassingEvent &event, int millisec = 3000);
     bool recvPersonalCard(PersonalCard &card, int millisec = 3000);
-	bool recvImage(const std::string &fileName, int millisec = 3000);
+    bool recvImage(int millisec = 3000);
     void writeImage(const std::string &data, const std::string &fileName);
 
     void sendImage();
@@ -66,7 +62,7 @@ private:
 	bool sendRestartQuery();
 
 	std::string userName;	//user information
-    QUuid userID;
+    std::string userID;
 
     boost::asio::io_context context;
     boost::asio::ip::tcp::socket socket;
@@ -78,7 +74,7 @@ private:
 
     std::shared_ptr<LFRConnectionsManager> manager;
 
-    QDateTime lastPing;
+    std::chrono::_V2::system_clock::time_point lastPing;
 
     std::thread t;
 

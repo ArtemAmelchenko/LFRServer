@@ -1,36 +1,34 @@
 #ifndef PERSONALCARDMANAGER_H
 #define PERSONALCARDMANAGER_H
 
-#include <QObject>
-#include <QFile>
-#include <QUuid>
-#include <QDateTime>
+#include <string>
+#include <vector>
 
 struct PersonalCard
 {
-	QUuid id;
-	QString imagePath;
-	QString name, surname, lastname;
-	QString post, subdivision;
+    std::string id;
+    std::string imagePath;
+    std::string name, surname, lastname;
+    std::string post, subdivision;
 	int brightnessCorrection, contrastCorrection;
 };
 
 //класс менеджера персональных карт
 class PersonalCardManager
 {
-	QList<PersonalCard> cards;
+    std::vector<PersonalCard> cards;
 
 public:
-	const QList<PersonalCard> *personalCards() const;
+    const std::vector<PersonalCard> *personalCards() const;
 
     void addCard(const PersonalCard &card);
     void editCard(const PersonalCard &card);
     void deleteCard(int cardIndex);
-    void deleteCard(const QUuid &cardID);
-	void loadCards(const QString &filename);
-	void saveCards(const QString &filename);
+    void deleteCard(const std::string &cardID);
+    void loadCards(const std::string &filename);
+    void saveCards(const std::string &filename);
 
-	void updateCards(const QList<PersonalCard> &newCards);
+    void updateCards(const std::vector<PersonalCard> &newCards);
 
 };
 

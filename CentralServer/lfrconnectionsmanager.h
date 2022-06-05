@@ -1,17 +1,16 @@
 #ifndef LFRCONNECTIONSMANAGER_H
 #define LFRCONNECTIONSMANAGER_H
 #include <list>
+#include <vector>
 #include <boost/asio.hpp>
 #include <boost/bind.hpp>
 #include "lfrconnection.h"
 #include "personalcardmanager.h"
-#include <QDateTime>
 
 class LFRConnectionsManager
 {
 public:
 	LFRConnectionsManager(boost::asio::ip::tcp::endpoint ep);
-	~LFRConnectionsManager();
 
 	void accepting();
 
@@ -23,7 +22,7 @@ public:
 
     void newPassingEvent(const PassingEvent &event);
 
-    const QList<PersonalCard> *personalCards() const;
+    const std::vector<PersonalCard> *personalCards() const;
 
 private:
 

@@ -3,11 +3,7 @@
 #include <thread>
 #include <iostream>
 #include <fstream>
-#include <QJsonDocument>
-#include <QJsonArray>
-#include <QJsonObject>
-#include <QJsonValue>
-#include <QUuid>
+#include "json.hpp"
 #include <boost/log/trivial.hpp>
 #include "lfrconnection.h"
 #include "lfrconnectionsmanager.h"
@@ -25,7 +21,7 @@ void LFRConnection::start()
 {
     running = true;
 
-    lastPing = QDateTime::currentDateTime();
+    lastPing = std::chrono::system_clock::now();
     BOOST_LOG_TRIVIAL(debug) << "connection: started";
 
     t = thread([&]()
@@ -48,7 +44,7 @@ void LFRConnection::start()
                     running = false;
                     break;
                 }
-                lastPing = QDateTime::currentDateTime();
+                lastPing = std::chrono::system_clock::now();
                 getline(in, msg);
 
                 BOOST_LOG_TRIVIAL(debug) << "connection: query - " << msg;
@@ -57,7 +53,7 @@ void LFRConnection::start()
                     boost::asio::read_until(socket, buffer, '\n');
                     string id;
                     getline(in, id);
-                    userID = QUuid(id.c_str());
+                    userID = id;
                 }
                 else if (msg == "new passing event")
                 {
@@ -117,10 +113,7 @@ void LFRConnection::start()
                 else if (msg == "image added")
                 {
                     BOOST_LOG_TRIVIAL(debug) << "connection: recieving image";
-					string fileName;
-					read_until(socket, buffer, "\n");
-					getline(in, fileName);
-					if (!recvImage(fileName))
+                    if (!recvImage())
                     {
                         BOOST_LOG_TRIVIAL(debug) << "connection: failed recieve image";
                         running = false;
@@ -131,6 +124,8 @@ void LFRConnection::start()
                 else if (msg == "get image")
                 {
                     BOOST_LOG_TRIVIAL(debug) << "connection: sending image";
+                    std::string msg = "sending image\n";
+                    boost::asio::write(socket, const_buffer(msg.data(), msg.size()));
                     sendImage();
                     BOOST_LOG_TRIVIAL(debug) << "connection: image sended";
                 }
@@ -154,12 +149,12 @@ void LFRConnection::stop()
     running = false;
 }
 
-void LFRConnection::fullSyncronisation(const QList<PersonalCard> *personalCards)
+void LFRConnection::fullSyncronisation(const std::vector<PersonalCard> *personalCards)
 {
     BOOST_LOG_TRIVIAL(debug) << "connection: full sync";
     std::string msg = "sync\n";
     boost::asio::write(socket, const_buffer(msg.data(), msg.size()));
-    msg = QString::number(personalCards->size()).toStdString() + "\n";
+    msg = to_string(personalCards->size()) + "\n";
     boost::asio::write(socket, const_buffer(msg.data(), msg.size()));
 
     for (int i = 0; i < personalCards->size(); ++i)
@@ -198,17 +193,7 @@ void LFRConnection::restartQuery()
 {
     Query q;
     q.type = 4;
-	queries.push(q);
-}
-
-bool LFRConnection::getImage(const string &fileName)
-{
-	BOOST_LOG_TRIVIAL(debug) << "conn: getting image" << fileName;
-	string msg = "get image\n";
-	msg += fileName + "\n";
-	boost::asio::const_buffer buff(msg.data(), msg.size());
-	boost::asio::write(socket, buff);
-	return recvImage(fileName);
+    queries.push(q);
 }
 
 bool LFRConnection::isEnd() const
@@ -220,7 +205,7 @@ void LFRConnection::sending()
 {
     while(running)
     {
-        if (lastPing.secsTo(QDateTime::currentDateTime()) >= 10)
+        if (std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now() - lastPing).count() >= 10)
         {
             BOOST_LOG_TRIVIAL(debug) << "connection: no msg for 10 sec -> disconnect";
             running = false;
@@ -275,63 +260,56 @@ void LFRConnection::sending()
 
 string LFRConnection::personalCardToJSON(const PersonalCard &card)
 {
-    QJsonDocument doc;
-    QJsonObject obj;
-    obj.insert("id", card.id.toString());
-    obj.insert("imagePath", card.imagePath);
-    obj.insert("lastname", card.lastname);
-    obj.insert("name", card.name);
-    obj.insert("post", card.post);
-    obj.insert("subdivision", card.subdivision);
-    obj.insert("surname", card.surname);
-    obj.insert("brightness", card.brightnessCorrection);
-    obj.insert("contrast", card.contrastCorrection);
-    doc.setObject(obj);
+    nlohmann::json j;
+    j["id"] = card.id;
+    j["imagePath"] = card.imagePath;
+    j["lastname"] = card.lastname;
+    j["name"] = card.name;
+    j["post"] = card.post;
+    j["subdivision"] = card.subdivision;
+    j["surname"] = card.surname;
+    j["brightness"] = card.brightnessCorrection;
+    j["contrast"] = card.contrastCorrection;
 
-    QByteArray b = doc.toJson();
-    std::string s(b.data());
-
-    return s;
+    return j.dump();
 }
 
 PersonalCard LFRConnection::personalCardFromJSON(const string &str)
 {
+    nlohmann::json j;
+    j.parse(str);
     PersonalCard card;
-    QJsonDocument doc = QJsonDocument::fromJson(QByteArray::fromStdString(str));
-    QJsonObject obj = doc.object();
-	card.id = QUuid(obj.take("id").toString());
-	card.imagePath = obj.take("imagePath").toString();
-    card.lastname = obj.take("lastname").toString();
-    card.name = obj.take("name").toString();
-    card.post = obj.take("post").toString();
-    card.subdivision = obj.take("subdivision").toString();
-    card.surname = obj.take("surname").toString();
-    card.brightnessCorrection = obj.take("brightness").toInt();
-    card.contrastCorrection = obj.take("contrast").toInt();
+    card.id = j["id"];
+    card.imagePath = j["imagePath"];
+    card.lastname = j["lastname"];
+    card.name = j["name"];
+    card.post = j["post"];
+    card.subdivision = j["subdivision"];
+    card.surname = j["surname"];
+    card.brightnessCorrection = j["brightness"];
+    card.contrastCorrection = j["contrast"];
     return card;
 }
 
 string LFRConnection::passingEventToJSON(const PassingEvent &event)
 {
-    QJsonDocument doc;
-    QJsonObject obj;
-    obj.insert("id", event.id.toString());
-    obj.insert("enterance", event.enterance);
-    obj.insert("passed", event.passed);
-    obj.insert("time", event.time.toString("yyyy.MM.dd.hh.mm.ss"));
-    doc.setObject(obj);
-    return doc.toJson().toStdString();
+    nlohmann::json j;
+    j["id"] = event.id;
+    j["enterance"] = event.enterance;
+    j["passed"] = event.passed;
+    j["time"] = event.time;
+    return j.dump();
 }
 
 PassingEvent LFRConnection::passingEventFromJSON(const string &str)
 {
+    nlohmann::json j;
+    j.parse(str);
     PassingEvent event;
-    QJsonDocument doc = QJsonDocument::fromJson(QByteArray::fromStdString(str));
-    QJsonObject obj = doc.object();
-	event.id = QUuid(obj.take("id").toString());
-    event.enterance = obj.take("enterance").toBool();
-    event.passed = obj.take("passed").toBool();
-    event.time = QDateTime::fromString(obj.take("time").toString(), "yyyy.MM.dd.hh.mm.ss");
+    event.id = j["id"];
+    event.enterance = j["enterance"];
+    event.passed = j["passed"];
+    event.time = j["time"];
     return event;
 }
 
@@ -359,17 +337,20 @@ bool LFRConnection::recvPersonalCard(PersonalCard &card, int millisec)
         std::string msg(std::istreambuf_iterator<char>(in), {});
         msg = msg.substr(0, msg.size() - 5);
         card = personalCardFromJSON(msg);
-	});
+    });
     context.reset();
     context.run_for(std::chrono::milliseconds(millisec));
     return recv;
 }
 
-bool LFRConnection::recvImage(const string& fileName, int millisec)
+bool LFRConnection::recvImage(int millisec)
 {
     atomic<bool> recv(false);
     int length;
-	BOOST_LOG_TRIVIAL(debug) << "connection: recieving " << fileName;
+    string fileName;
+    read_until(socket, buffer, "\n");
+    getline(in, fileName);
+    BOOST_LOG_TRIVIAL(debug) << "connection: recieving " << fileName;
     read_until(socket, buffer, "\n");
     string len;
     getline(in, len);
@@ -415,7 +396,7 @@ void LFRConnection::sendImage()
     f.close();
 
     int length = data.size();
-	string strLen = to_string(length) + "\n";
+    string strLen = to_string(length);
     BOOST_LOG_TRIVIAL(debug) << "connection: sending length " << strLen;
     write(socket, const_buffer(strLen.data(), strLen.size()));
     write(socket, const_buffer(data.data(), data.size()));
