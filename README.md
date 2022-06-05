@@ -6,7 +6,9 @@
 ## <div align="center">Развертывание в docker</div>
 
 ### Клонировать репозиторий 
+```
 git clone https://github.com/ArtemAmelchenko/LFRServer.git
+```
 
 ### Собрать контейнер
 ```
